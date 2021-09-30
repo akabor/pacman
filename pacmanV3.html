@@ -1,0 +1,66 @@
+<html>
+<SCRIPT>
+    var posx = 0;
+    var posy = 0;
+    const pacArray = [
+        ['PacMan1.png', 'PacMan2.png'],
+        ['PacMan3.png', 'PacMan4.png']
+    ];
+    var currentDirection = 0; 
+    var previousDirection = 0;
+    var focus = 0;
+
+    function Run() {
+        let img = document.getElementById("PacMan");
+        let imgWidth = img.width
+        let yDir = 1;
+        let yIncrement = 50;
+        focus = (focus + 1) % 2;
+        let directions = checkPageBounds(currentDirection, previousDirection, imgWidth);
+        currentDirection = directions[0];
+        previousDirection = directions[1];
+        img.src = pacArray[currentDirection][focus];
+        if (currentDirection) {
+            posx -= 20;
+            img.style.left = posx + "px";
+        } else {
+            posx += 20;
+            img.style.left = posx + 'px';
+        }
+        if(previousDirection !== currentDirection){
+            if(posy + yIncrement > window.innerHeight - 200){
+                yDir = 0;
+                posy = 0;
+            } else if(posy + yIncrement < 0){
+                yDir = 1;
+            }
+        } else {
+            yDir = 0;
+        }
+        posy += yIncrement * yDir;
+        img.style.top = posy + 'px';
+        
+        setTimeout(Run,50)
+    }
+
+
+    function checkPageBounds(currentDirection, previousDirection, imgWidth) {
+        previousDirection = currentDirection;
+        if(currentDirection === 0){
+            if(posx+imgWidth > window.innerWidth){
+                currentDirection = 1;
+            }
+        } else if(currentDirection === 1){
+            if(posx < 0){
+                currentDirection = 0;
+            }
+        }
+        return [currentDirection, previousDirection];
+    }
+</SCRIPT>
+
+<body>
+    <img id="PacMan" src="PacMan1.png" width='200' onclick="Run()" style="position:absolute"> </img>
+</body>
+
+</html>
