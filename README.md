@@ -11,3 +11,7 @@ Download all files to the same location on your computer. Drag and drop the pacm
 ## Roadmap
 
 Future updates to this program will include a ghost chasing Pacman, and Pacman going back up the page. When Pacman goes back up the page, the ghost will flash indicating vulnerability. In this case, Pacman will be chasing the ghost.
+
+## License Information
+
+Please read all information located in the LICENSE file in this repository.
