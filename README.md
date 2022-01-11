@@ -1,4 +1,4 @@
-# <a href="https://github.com/akabor/pacman">Pacman</a>
+# <a href="https://akabor.github.io/pacman/">Pacman</a>
 
 ## Project Description
 
